@@ -16,15 +16,22 @@ kernel parameter:
 initcall_blacklist=dw_pci_driver_init
 ```
 
-That token is the one already used on other Omarchy MacBook8,1 machines
-([omacom-os/omarchy#9735](https://github.com/omacom-os/omarchy/pull/9735)).
-This package is only the Limine drop-in and the scripts that install it.
-It does not include the hibernate hooks or the suspend change from that
-discussion. Those are a different package.
+That token is the public Omarchy workaround for this model. The
+write-up that names it, and also sets `mem_sleep_default=s2idle` on
+the same line, is Matthias Granberry's
+[gist](https://gist.github.com/matthiasjg/78aaf7802146f0b89be3da9e4feb111f).
+The open pull request that copies the keyboard half is
+[omacom/omarchy#9735](https://github.com/omacom/omarchy/pull/9735).
+The `omacom-os` URL does not resolve.
 
-A proper applespi PIO quirk exists upstream and is not in kernel
-`7.2.5-4-omarchy`. This drop-in is the workaround until that quirk is in
-the kernel you boot.
+This package is only the Limine drop-in and the scripts that install
+the keyboard token. It does not include that gist's hibernate hooks,
+its suspend detach hook, or the sleep token. Those are a different
+discussion. The real fix, a PIO quirk in the SPI driver, is Shih-Yuan
+Lee's series on the linux-spi list
+([v16 5/7](https://lore.kernel.org/linux-spi/20260720162117.32304-6-fourdollars@debian.org/)).
+It is not in kernel `7.2.5-4-omarchy`. This drop-in is the workaround
+until that quirk is in the kernel you boot.
 
 ## Install
 
