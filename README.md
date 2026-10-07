@@ -65,6 +65,10 @@ sudo bash revert.sh
 sudo reboot
 ```
 
+## For agents
+
+Read `AGENTS.md` before changing this tree.
+
 ## License
 
 MIT. See `LICENSE`. The kernel parameter itself is not original to this
